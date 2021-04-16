@@ -11,7 +11,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { AuthComponent } from './components/user/auth/auth.component';
-import { RegisterComponent } from './components/user/register/register.component'
+import { RegisterComponent } from './components/user/register/register.component';
+import { ListComponent } from './components/movie/list/list.component';
+import { MovieSearchComponent } from './components/movie/movie-search/movie-search.component'
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { RegisterComponent } from './components/user/register/register.component
     NavComponent,
     HomeComponent,
     AuthComponent,
-    RegisterComponent
+    RegisterComponent,
+    ListComponent,
+    MovieSearchComponent
   ],
   imports: [
     BrowserModule,
