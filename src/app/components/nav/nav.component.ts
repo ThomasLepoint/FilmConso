@@ -1,8 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { NbMenuItem, NbMenuService } from '@nebular/theme';
-import { Subscription } from 'rxjs';
+import { of, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -13,19 +12,21 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NavComponent implements OnInit {
   items : NbMenuItem[];
   itemsSub : Subscription;
+  list = of(this._service.items)
 
-  constructor(private _service : AuthService, private _menuService : NbMenuService, private _router : Router) { 
+  constructor(private _service : AuthService, private _menuService : NbMenuService) { 
   }
 
   ngOnInit(): void {
-    this.itemsSub = this._service.itemsSubject.subscribe((i : NbMenuItem[])=>{this.items = i});
+    this.items = this._service.items
+    this.itemsSub = this._service.loginSubJect.subscribe((i : boolean)=>{this.items = this._service.items});
     this._menuService.onItemClick().subscribe((event)=>{
       if(event.item.title === 'Logout')
         {
           this._service.logout();
-          this._router.navigate([('home')]);
         }
       });
     this._service.emitItemSubject();
+    
   }
 }

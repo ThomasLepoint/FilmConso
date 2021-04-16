@@ -8,7 +8,7 @@
                 donner votre avis sur ceux-ci tout en ayant un profil complet que vous pourrez modifier à votre guise
         </div>
         <div class="card-row">
-            <div class="card-col">
+            <div class="card-col" *ngIf="!isConnected">
                 <nb-card size="tiny">
                     <nb-card-header>
                         S'inscrire ?
@@ -18,7 +18,7 @@
                     </nb-card-body>
                 </nb-card>
             </div>
-            <div class="card-col">
+            <div class="card-col" *ngIf="!isConnected">
                 <nb-card size="tiny">
                     <nb-card-header>
                         Se connecter ? 
@@ -28,13 +28,23 @@
                     </nb-card-body>
                 </nb-card>
             </div>
-            <div class="card-col">
+            <div class="card-col" *ngIf="isConnected">
                 <nb-card size="tiny">
                     <nb-card-header>
-                        Naviguer ? 
+                        Voir la liste de film ? 
                     </nb-card-header>
                     <nb-card-body>
                         <button (click)="onNav()" nbButton>Click here</button>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+            <div class="card-col" *ngIf="isConnected">
+                <nb-card size="tiny">
+                    <nb-card-header>
+                        Voir Mon Profil
+                    </nb-card-header>
+                    <nb-card-body>
+                        <button (click)="onProfil()" nbButton>Click here</button>
                     </nb-card-body>
                 </nb-card>
             </div>

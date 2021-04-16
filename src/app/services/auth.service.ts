@@ -1,23 +1,23 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NbMenuItem, NbMenuService } from '@nebular/theme';
-import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
+import { NbMenuItem, NbMenuService, NbToastrService } from '@nebular/theme';
+import { of, Subject } from 'rxjs';
+import { AuthUser, User } from '../models/User.models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  user : User
   isConnected : boolean = false;
-  itemsSubject = new Subject<NbMenuItem[]>();
+  loginSubJect = new Subject<boolean>();
   logoutItems : NbMenuItem[] = [
     {link : '/home', title : 'Home', icon : 'home'},
     {title : 'User', icon:'people-outline', children : [
       {link : '/user/auth', title : 'Login', icon : 'person-done-outline'},
       {link : 'user/register', title : 'Register', icon : 'person-add-outline'}
     ]},
-    {title : 'Movies', icon : 'film-outline', children : [
-      {title : 'List' , link : '/movie/list' , icon : 'list-outline'},
-      {title : 'Search', link : '/movie/search', icon : 'search-outline'}
-    ]}
   ];
   loginItems : NbMenuItem[] = [
     {link : '/home', title : 'Home', icon : 'home'},
@@ -69,22 +69,38 @@ export class AuthService {
         ]},
       ]}]
   items : NbMenuItem[] = this.logoutItems;
-
-  constructor(private _menuService : NbMenuService) { }
+  constructor(private _menuService : NbMenuService, private _httpClient : HttpClient, private _toast : NbToastrService, private _router : Router) { }
 emitItemSubject()
 {
-  this.itemsSubject.next(this.items.slice());
+  this.loginSubJect.next(this.isConnected);
 }
-login() 
+login(AuthUser : AuthUser) 
 { 
-  this.isConnected = true;
-  this.items = this.adminItem;
-  this.emitItemSubject();
+  this._httpClient.post<User>("http://localhost:56172/api/User/login",       
+  {Login : AuthUser.login, Password : AuthUser.password}
+    ).subscribe((u : User) => {
+      this.user = u;
+      localStorage.setItem('token', u.usertoken);
+      localStorage.setItem('id', u.id.toString());
+      if(this.user)
+      {
+        this.isConnected = true;
+        (this.user.isAdmin) ? this.items = this.adminItem : this.items = this.loginItems;
+        this.emitItemSubject();
+        this._router.navigate(['home'])
+      }
+      this._toast.success("Connexion reussie", 'Logged in')
+    },
+      (error) => {this._toast.danger('Login / Mot de passe Incorrect', 'Connexion Refusée')
+      }
+    )
 }
 logout()
 {
   this.isConnected = false;
   this.items = this.logoutItems;
   this.emitItemSubject();
+  this._toast.danger('Deconnexion reussie', 'Logged Out')
+
 }
 }

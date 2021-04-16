@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthUser } from 'src/app/models/User.models';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,21 +11,30 @@ import { AuthService } from 'src/app/services/auth.service';
 export class AuthComponent implements OnInit {
   
   isConnected : boolean;
-  constructor(private _service : AuthService) { }
+  form : FormGroup;
+  userAuth : AuthUser;
+
+  constructor(private _service : AuthService, private _builder : FormBuilder) { }
 
   ngOnInit(): void {
     this.isConnected = this._service.isConnected
+    this.form = this._builder.group({
+      'login' : [null, Validators.required],
+      'password' : [null, Validators.required]
+    });
   }
 
-  login()
+  login() 
   {
-    this._service.login();
-    this.isConnected = this._service.isConnected;
+    this.userAuth = this.form.value
+    this._service.login(this.userAuth);
+    this._service.emitItemSubject();
+    
   }
   logout()
   {
     this._service.logout();
-    this.isConnected = this._service.isConnected;
+    this._service.emitItemSubject();
   }
 
 }
