@@ -1,0 +1,17 @@
+:host {
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  .card-row {
+    display: flex;
+    margin: 0 -0.5rem;
+  }
+  .card-descrip{
+      padding: 12px;
+  }
+  .card-col {
+    flex: 1 0 calc(33% - 1rem);
+    margin: 0 0.5rem;
+  }
