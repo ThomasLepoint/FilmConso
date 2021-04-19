@@ -1,1 +1,16 @@
-<p>list works!</p>
+<nb-card status="success" accent="warning">
+<nb-card-header>
+    <h4>Liste des Films</h4>
+</nb-card-header>
+<nb-card-body>
+    <nb-list>
+        <nb-list-item *ngFor="let film of listMovie">
+            <div>
+                <div>{{film.title}}</div>
+                <div>{{ film.releaseDate | date:'dd-mm-yyyy'}}</div>
+                <div><button nbButton>Details</button></div>
+            </div>
+        </nb-list-item>
+    </nb-list>
+</nb-card-body>
+</nb-card>
