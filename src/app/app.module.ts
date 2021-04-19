@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbButtonModule, NbCardModule, NbInputModule, NbListModule, NbMenuModule, NbToastrModule, NbDialogModule, NbContextMenuModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbButtonModule, NbCardModule, NbInputModule, NbListModule, NbMenuModule, NbToastrModule, NbDialogModule, NbContextMenuModule, NbTreeGridModule, NbPopoverModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NavComponent } from './components/nav/nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,7 +13,8 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthComponent } from './components/user/auth/auth.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { ListComponent } from './components/movie/list/list.component';
-import { MovieSearchComponent } from './components/movie/movie-search/movie-search.component'
+import { MovieSearchComponent } from './components/movie/movie-search/movie-search.component';
+import { MovieSynopsisDialogComponent } from './components/movie/movie-synopsis-dialog/movie-synopsis-dialog.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MovieSearchComponent } from './components/movie/movie-search/movie-sear
     AuthComponent,
     RegisterComponent,
     ListComponent,
-    MovieSearchComponent
+    MovieSearchComponent,
+    MovieSynopsisDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { MovieSearchComponent } from './components/movie/movie-search/movie-sear
     NbDialogModule.forRoot(),
     NbSidebarModule.forRoot(),
     HttpClientModule,
-
+    NbDialogModule.forRoot(),
+    NbPopoverModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

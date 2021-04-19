@@ -2,13 +2,26 @@
 <nb-card-header>
     <h4>Liste des Films</h4>
 </nb-card-header>
+
 <nb-card-body>
     <nb-list>
+        <nb-list-item>
+            <div class="listItemContainer">
+                <div class="firstColumn">Title</div>
+                <div class="secondColumn">Release Date</div>
+                <div class="buttonContainer"></div>
+            </div>
+        </nb-list-item>
+    </nb-list>
+    <nb-list>
         <nb-list-item *ngFor="let film of listMovie">
-            <div>
-                <div>{{film.title}}</div>
-                <div>{{ film.releaseDate | date:'dd-mm-yyyy'}}</div>
-                <div><button nbButton>Details</button></div>
+            <div class=listItemContainer>
+                <div class="firstColumn">{{film.title}}</div>
+                <div class="secondColumn">{{ film.releaseDate | date:'dd-MM-yyyy'}}</div>
+                <div class="buttonContainer">
+                    <button nbButton (click)="openDialog(film.synopsis)">Synopsis</button>
+                    <button nbButton>Details</button>
+                </div>
             </div>
         </nb-list-item>
     </nb-list>

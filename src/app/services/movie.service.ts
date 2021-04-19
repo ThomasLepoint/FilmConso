@@ -14,11 +14,11 @@ export class MovieService {
 
   constructor(private _httpClient : HttpClient, private _toast : NbToastrService, private _router : Router) { }
 
-  getAll() : Observable<Movie>
+  getAll() : Observable<Movie[]>
   {
     let header = new HttpHeaders ({
       'Authorization' : 'Bearer '+localStorage.getItem('token') 
     })    
-    return this._httpClient.get<Movie>('http://localhost:56172/api/Movie', {headers : header});
+    return this._httpClient.get<Movie[]>('http://localhost:56172/api/Movie', {headers : header});
   }
 }
