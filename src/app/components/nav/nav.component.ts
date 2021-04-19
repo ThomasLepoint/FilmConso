@@ -18,8 +18,9 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._service.loadItem();
+    this.itemsSub = this._service.loginSubJect.subscribe(()=>{this.items = this._service.items});
     this.items = this._service.items
-    this.itemsSub = this._service.loginSubJect.subscribe((i : boolean)=>{this.items = this._service.items});
     this._menuService.onItemClick().subscribe((event)=>{
       if(event.item.title === 'Logout')
         {

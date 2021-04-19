@@ -10,7 +10,7 @@ import { AuthUser, User } from '../models/User.models';
 })
 export class AuthService {
   user : User
-  isConnected : boolean = false;
+  isConnected : boolean = (localStorage.getItem('token') ? true : false);
   loginSubJect = new Subject<boolean>();
   logoutItems : NbMenuItem[] = [
     {link : '/home', title : 'Home', icon : 'home'},
@@ -68,11 +68,28 @@ export class AuthService {
           {title : 'Delete', icon : 'trash-2-outline', link : '/comment/delete'},
         ]},
       ]}]
-  items : NbMenuItem[] = this.logoutItems;
+  items : NbMenuItem[];
   constructor(private _menuService : NbMenuService, private _httpClient : HttpClient, private _toast : NbToastrService, private _router : Router) { }
+
+
 emitItemSubject()
 {
   this.loginSubJect.next(this.isConnected);
+}
+
+loadItem()
+{
+  if(localStorage.getItem('token'))
+  {
+    this.items = (localStorage.getItem('role') === 'false') ? this.loginItems : this.adminItem;
+    this.isConnected = true;
+  }
+  else
+  {
+    this.items = this.logoutItems;
+    this.isConnected = false;
+  }
+  this.emitItemSubject();
 }
 login(AuthUser : AuthUser) 
 { 
@@ -82,6 +99,7 @@ login(AuthUser : AuthUser)
       this.user = u;
       localStorage.setItem('token', u.usertoken);
       localStorage.setItem('id', u.id.toString());
+      localStorage.setItem('role', u.isAdmin ? 'true' : 'false')
       if(this.user)
       {
         this.isConnected = true;
@@ -97,10 +115,9 @@ login(AuthUser : AuthUser)
 }
 logout()
 {
-  this.isConnected = false;
-  this.items = this.logoutItems;
-  this.emitItemSubject();
+  localStorage.removeItem('token');
+  localStorage.removeItem('id');
+  this.loadItem();
   this._toast.danger('Deconnexion reussie', 'Logged Out')
-
 }
 }
