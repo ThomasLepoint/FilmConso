@@ -14,7 +14,16 @@ import { AuthComponent } from './components/user/auth/auth.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { ListComponent } from './components/movie/list/list.component';
 import { MovieSearchComponent } from './components/movie/movie-search/movie-search.component';
-import { MovieSynopsisDialogComponent } from './components/movie/movie-synopsis-dialog/movie-synopsis-dialog.component'
+import { MovieSynopsisDialogComponent } from './components/movie/movie-synopsis-dialog/movie-synopsis-dialog.component';
+import { MovieDetailComponent } from './components/movie/movie-detail/movie-detail.component';
+import { CommentDetailComponent } from './components/comments/comment-detail/comment-detail.component';
+import { CreateMovieComponent } from './components/movie/create-movie/create-movie.component';
+import { UpdateMovieComponent } from './components/movie/update-movie/update-movie.component';
+import { AddPersonComponent } from './components/person/add-person/add-person.component';
+import { UpdatePersonComponent } from './components/person/update-person/update-person.component';
+import { ListPersonComponent } from './components/person/list-person/list-person.component';
+import { ListUserComponent } from './components/admin/list-user/list-user.component';
+import { ListCommentsAdminComponent } from './components/admin/list-comments-admin/list-comments-admin.component'
 
 @NgModule({
   declarations: [
@@ -25,7 +34,16 @@ import { MovieSynopsisDialogComponent } from './components/movie/movie-synopsis-
     RegisterComponent,
     ListComponent,
     MovieSearchComponent,
-    MovieSynopsisDialogComponent
+    MovieSynopsisDialogComponent,
+    MovieDetailComponent,
+    CommentDetailComponent,
+    CreateMovieComponent,
+    UpdateMovieComponent,
+    AddPersonComponent,
+    UpdatePersonComponent,
+    ListPersonComponent,
+    ListUserComponent,
+    ListCommentsAdminComponent
   ],
   imports: [
     BrowserModule,

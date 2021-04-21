@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { ListComponent } from './components/movie/list/list.component';
+import { MovieDetailComponent } from './components/movie/movie-detail/movie-detail.component';
 import { MovieSearchComponent } from './components/movie/movie-search/movie-search.component';
 import { AuthComponent } from './components/user/auth/auth.component';
 import { RegisterComponent } from './components/user/register/register.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path : 'user/register', component : RegisterComponent},
   {path : 'movie/list', component : ListComponent},
   {path : 'movie/search', component : MovieSearchComponent},
+  {path : 'movie/detail/:id', component:MovieDetailComponent},
   {path : '', redirectTo : 'home', pathMatch:'full'}
 ];
 
