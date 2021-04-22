@@ -16,9 +16,10 @@ export class MovieService {
 
   getAll() : Observable<Movie[]>
   {
-    let header = new HttpHeaders ({
-      'Authorization' : 'Bearer '+localStorage.getItem('token') 
-    })    
-    return this._httpClient.get<Movie[]>('http://localhost:56172/api/Movie', {headers : header});
+    // let header = new HttpHeaders ({
+    //   'Authorization' : 'Bearer '+localStorage.getItem('token') 
+    // })    
+    // return this._httpClient.get<Movie[]>('http://localhost:56172/api/Movie', {headers : header});
+    return this._httpClient.get<Movie[]>('http://localhost:56172/api/Movie');
   }
 }

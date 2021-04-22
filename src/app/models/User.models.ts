@@ -10,3 +10,12 @@ export interface User {
     usertoken: string;
     isAdmin: boolean;
   }
+  export interface registerUser {
+      login : string;
+      email : string;
+      password : string;
+      confirmedPassword : string;
+      firstname : string;
+      lastname : string;
+      birthdate : Date;
+  }

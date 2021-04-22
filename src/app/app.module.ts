@@ -8,7 +8,7 @@ import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbButtonModule, NbCardM
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NavComponent } from './components/nav/nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { AuthComponent } from './components/user/auth/auth.component';
 import { RegisterComponent } from './components/user/register/register.component';
@@ -24,6 +24,7 @@ import { UpdatePersonComponent } from './components/person/update-person/update-
 import { ListPersonComponent } from './components/person/list-person/list-person.component';
 import { ListUserComponent } from './components/admin/list-user/list-user.component';
 import { ListCommentsAdminComponent } from './components/admin/list-comments-admin/list-comments-admin.component'
+import { TokenInterceptor } from './services/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,9 @@ import { ListCommentsAdminComponent } from './components/admin/list-comments-adm
     NbDialogModule.forRoot(),
     NbPopoverModule,
   ],
-  providers: [],
+  providers: [
+    { provide : HTTP_INTERCEPTORS, useClass : TokenInterceptor, multi : true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
