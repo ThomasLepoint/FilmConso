@@ -1,1 +1,28 @@
-<p>update-comment works!</p>
+<div>
+    <nb-card style="margin-top: 12px;">
+        <nb-card-header>
+            Commentaires
+        </nb-card-header>
+        <nb-card-body>
+                 <div class=listItemContainer>
+                     <div class="header">
+                         <div class="title">{{comment.movieTitle}}</div>
+                         <button nbButton (click)="updateComment(comment.id)">Modifier</button>
+                     </div>
+                     <div class="content">
+                         <div class="contenHeader">
+                             <div><span>Title : </span>{{comment.title}}</div>
+                             <div><span>Date : </span>{{comment.created_at}}</div>
+                             <div>
+                                 <span>Note : </span>
+                             </div>
+                         </div>
+                         <div class="contentBody">
+                             {{comment.content}}
+                         </div>
+                     </div>
+                 </div>
+        </nb-card-body>
+    </nb-card>
+
+ </div>
