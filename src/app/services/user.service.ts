@@ -21,7 +21,14 @@ export class UserService {
       },
       (error) => {this._toast.danger("Erreur lors de l'inscription")});
   }
-
+  update(user : completeUser)
+  {
+    this._httpClient.put<completeUser>("http://localhost:56172/api/User/", user).subscribe(()=>{
+      this._router.navigate(['user/myprofil'])  
+      this._toast.success("modification réussie", "Success")
+      },
+      (error) => {this._toast.danger("Erreur lors de l'inscription")});
+  }
   getUsers() : Observable<User[]>
   {
     if(localStorage.getItem('token'))

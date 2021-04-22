@@ -117,6 +117,7 @@ logout()
 {
   localStorage.removeItem('token');
   localStorage.removeItem('id');
+  localStorage.removeItem('role');
   this.loadItem();
   this._toast.danger('Deconnexion reussie', 'Logged Out')
 }

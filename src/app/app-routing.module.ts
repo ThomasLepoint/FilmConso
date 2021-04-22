@@ -10,14 +10,16 @@ import { MyaccountComponent } from './components/user/myaccount/myaccount.compon
 import { MyaccountupdateComponent } from './components/user/myaccountupdate/myaccountupdate.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { UsersListComponent } from './components/user/users-list/users-list.component';
+import { UserResolverService } from './services/user-resolver.service';
+import { UserService } from './services/user.service';
 
 const routes: Routes = [
   {path : 'home', component : HomeComponent},
   {path : 'user/auth', component : AuthComponent},
   {path : 'user/register', component : RegisterComponent},
   {path : 'user/list', component : UsersListComponent},
-  {path : 'user/myprofil', component: MyaccountComponent},
-  {path : 'user/myprofil/update', component : MyaccountupdateComponent},
+  {path : 'user/myprofil', resolve : {completeUser : UserResolverService}, component: MyaccountComponent},
+  {path : 'user/myprofil/update', resolve : {completeUser : UserResolverService}, component : MyaccountupdateComponent},
   {path : 'movie/list', component : ListComponent},
   {path : 'movie/search', component : MovieSearchComponent},
   {path : 'movie/detail/:id', component:MovieDetailComponent},

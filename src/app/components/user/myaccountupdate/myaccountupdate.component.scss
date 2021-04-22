@@ -1,0 +1,20 @@
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    label{
+        padding: 12px;
+    }
+}
+.buttonContainer{
+    padding: 12px;
+}
+.authCard{
+    width: 40%;
+    margin: auto;
+}
+.cardBody{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
