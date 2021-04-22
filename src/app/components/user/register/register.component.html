@@ -1,1 +1,48 @@
-<p>register works!</p>
+<nb-card class="authCard">
+    <nb-card-header class="cardBody">
+        Inscription
+    </nb-card-header>
+    <nb-card-body class="cardBody">
+        <form [formGroup]="form" (ngSubmit)="register()">
+            <div class="inputContainer">
+                <label for="login">Login</label>
+                <input type="text" nbInput shape="semi-round" id="login" formControlName="Login" fieldSize="giant" placeholder="ex : JohnSmith">
+                <p *ngIf="form.get('Login').value != null && form.get('Login').invalid">
+                    Login est déjà pris
+                </p>
+            </div>
+            <div class="inputContainer">
+                <label for="password">Password</label>
+                <input type="password" nbInput shape="semi-round" id="password" formControlName="Password" fieldSize="giant" placeholder="ex : Password">
+            </div>
+            <div class="inputContainer">
+                <label for="confirmedPassword">Confirm Password</label>
+                <input type="password" nbInput shape="semi-round" id="confirmedPassword" formControlName="ConfirmPassword" fieldSize="giant" placeholder="ex : Password">
+                <p *ngIf="form.get('ConfirmPassword').value != null && form.get('ConfirmPassword').invalid">
+                    test
+                    {{form.controls['ConfirmPassword'].errors['myError']}}
+                </p>
+            </div>
+            <div class="inputContainer">
+                <label for="email">Email</label>
+                <input type="text" nbInput shape="semi-round" id="email" formControlName="Email" fieldSize="giant" placeholder="ex : JohnSmith">
+            </div>
+            <div class="inputContainer">
+                <label for="firstname">First Name</label>
+                <input type="text" nbInput shape="semi-round" id="firstname" formControlName="FirstName" fieldSize="giant" placeholder="ex : JohnSmith">
+            </div>
+            <div class="inputContainer">
+                <label for="lastname">Last Name</label>
+                <input type="text" nbInput shape="semi-round" id="lastname" formControlName="LastName" fieldSize="giant" placeholder="ex : JohnSmith">
+            </div>
+            <div class="inputContainer">
+                <label for="birthDate">Birth Date</label>
+                <input [nbDatepicker]="datepicker" nbInput shape="semi-round" id="birthDate" formControlName="BirthDate" fieldSize="giant" placeholder="ex : JohnSmith">
+                <nb-datepicker #datepicker></nb-datepicker>
+            </div>
+            <div class="buttonContainer">
+                <button [disabled]="form.invalid" type="submit" nbButton>S'inscrire</button>
+            </div>
+        </form>
+    </nb-card-body>
+</nb-card>

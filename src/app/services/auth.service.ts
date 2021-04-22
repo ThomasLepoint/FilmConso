@@ -94,14 +94,14 @@ loadItem()
 login(AuthUser : AuthUser) 
 { 
   this._httpClient.post<User>("http://localhost:56172/api/User/login",       
-  {Login : AuthUser.login, Password : AuthUser.password}
+  {Login : AuthUser.Login, Password : AuthUser.Password}
     ).subscribe((u : User) => {
-      this.user = u;
-      localStorage.setItem('token', u.usertoken);
-      localStorage.setItem('id', u.id.toString());
-      localStorage.setItem('role', u.isAdmin ? 'true' : 'false')
+      this.user = u;     
       if(this.user)
       {
+        localStorage.setItem('token', u.usertoken);
+        localStorage.setItem('id', u.id.toString());
+        localStorage.setItem('role', u.isAdmin ? 'true' : 'false')
         this.isConnected = true;
         (this.user.isAdmin) ? this.items = this.adminItem : this.items = this.loginItems;
         this.emitItemSubject();

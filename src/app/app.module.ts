@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbButtonModule, NbCardModule, NbInputModule, NbListModule, NbMenuModule, NbToastrModule, NbDialogModule, NbContextMenuModule, NbTreeGridModule, NbPopoverModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbButtonModule, NbCardModule, NbInputModule, NbListModule, NbMenuModule, NbToastrModule, NbDialogModule, NbContextMenuModule, NbTreeGridModule, NbPopoverModule, NbDatepicker, NbDatepickerModule, NbIconModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NavComponent } from './components/nav/nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -25,6 +25,10 @@ import { ListPersonComponent } from './components/person/list-person/list-person
 import { ListUserComponent } from './components/admin/list-user/list-user.component';
 import { ListCommentsAdminComponent } from './components/admin/list-comments-admin/list-comments-admin.component'
 import { TokenInterceptor } from './services/token.interceptor';
+import { UsersListComponent } from './components/user/users-list/users-list.component';
+import { MyaccountComponent } from './components/user/myaccount/myaccount.component';
+import { MyaccountupdateComponent } from './components/user/myaccountupdate/myaccountupdate.component';
+import { UpdateCommentComponent } from './components/comments/update-comment/update-comment.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,11 @@ import { TokenInterceptor } from './services/token.interceptor';
     UpdatePersonComponent,
     ListPersonComponent,
     ListUserComponent,
-    ListCommentsAdminComponent
+    ListCommentsAdminComponent,
+    UsersListComponent,
+    MyaccountComponent,
+    MyaccountupdateComponent,
+    UpdateCommentComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +75,9 @@ import { TokenInterceptor } from './services/token.interceptor';
     HttpClientModule,
     NbDialogModule.forRoot(),
     NbPopoverModule,
+    NbDatepickerModule.forRoot(),
+    NbEvaIconsModule,
+    NbIconModule,
   ],
   providers: [
     { provide : HTTP_INTERCEPTORS, useClass : TokenInterceptor, multi : true}

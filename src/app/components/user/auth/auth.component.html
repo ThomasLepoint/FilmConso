@@ -6,11 +6,11 @@
         <form [formGroup]="form" (ngSubmit)="login()">
             <div class="inputContainer">
                 <label for="login">Login</label>
-                <input type="text" nbInput shape="semi-round" id="login" formControlName="login" fieldSize="giant" placeholder="ex : JohnSmith">
+                <input type="text" nbInput shape="semi-round" id="login" formControlName="Login" fieldSize="giant" placeholder="ex : JohnSmith">
             </div>
             <div class="inputContainer">
                 <label for="password">Password</label>
-                <input type="password" nbInput shape="semi-round" id="password" formControlName="password" fieldSize="giant" placeholder="ex : Password">
+                <input type="password" nbInput shape="semi-round" id="password" formControlName="Password" fieldSize="giant" placeholder="ex : Password">
             </div>
             <div class="buttonContainer">
                 <button [disabled]="form.invalid" type="submit" nbButton>Se Connecter</button>

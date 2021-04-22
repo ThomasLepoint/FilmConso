@@ -1,0 +1,79 @@
+<nb-card status="success" accent="warning">
+    <nb-card-header class="nbHeader">
+        <h4>Mon profil</h4>
+        <button nbButton (click)="updateUser()">Modifier</button>
+    </nb-card-header>
+    <nb-card-body>
+        <div class="divContainer">
+            <h6>Informations de connexion</h6>
+            <div class="inputContainer">
+                <div class="labelType">Login : </div>
+                <div class="inputType">{{user.login}} </div>
+            </div>
+            <div class="inputContainer">
+                <div class="labelType">Password : </div>
+                <div class="inputType">{{user.password}} </div>
+            </div>
+        </div>
+        <div class="divContainer"> 
+            <h6>Informations générales</h6>
+            <div class="inputContainer">
+                <div class="labelType">Email : </div>
+                <div class="inputType">{{user.email}}</div>
+            </div>
+            <div class="inputContainer">
+                <div class="firstColumn">
+                    <div class="labelType">First Name : </div>
+                    <div class="inputType">{{user.firstName}} </div>
+                </div>
+                <div>
+                    <div class="secondColumn">
+                        <div class="labelType" >Last Name : </div>
+                        <div class="inputType">{{user.lastName}} </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inputContainer">
+                <div class="labelType">Birth Date : </div>
+                <div class="inputType">{{user.birthDate | date:'dd-MM-yyyy'}}</div>
+            </div>
+        </div>
+        <div>
+           <nb-card style="margin-top: 12px;">
+               <nb-card-header>
+                   Commentaires
+               </nb-card-header>
+               <nb-card-body>
+                <nb-list>
+                    <nb-list-item *ngFor="let item of user.comments">
+                        <div class=listItemContainer>
+                            <div class="header">
+                                <div class="title">{{item.movieTitle}}</div>
+                                <button nbButton (click)="updateComment(item.id)">Modifier</button>
+                            </div>
+                            <div class="content">
+                                <div class="contenHeader">
+                                    <div><span>Title : </span>{{item.title}}</div>
+                                    <div><span>Date : </span>{{item.created_at}}</div>
+                                    <div>
+                                        <span>Note : </span>
+                                        <nb-icon *ngFor="let n of numSequence(item.value);
+                                        let i = index;" icon="star"></nb-icon>
+                                        <nb-icon *ngFor="let n of numSequence(5 - item.value);
+                                        let i = index;" icon="star-outline"></nb-icon>
+                                    </div>
+                                </div>
+                                <div class="contentBody">
+                                    {{item.content}}
+                                </div>
+                            </div>
+                        </div>
+                    </nb-list-item>
+                </nb-list>
+               </nb-card-body>
+           </nb-card>
+
+        </div>
+
+    </nb-card-body>
+    </nb-card>

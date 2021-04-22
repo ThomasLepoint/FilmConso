@@ -19,8 +19,8 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
     this.isConnected = this._service.isConnected
     this.form = this._builder.group({
-      'login' : [null, Validators.required],
-      'password' : [null, Validators.required]
+      'Login' : [null, Validators.required],
+      'Password' : [null, Validators.required]
     });
   }
 

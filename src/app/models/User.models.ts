@@ -1,7 +1,9 @@
+import { userComments } from "./Comments";
+
 export interface AuthUser
 {
-    login : string;
-    password : string;
+    Login : string;
+    Password : string;
 }
 export interface User {
     id: string;
@@ -11,11 +13,23 @@ export interface User {
     isAdmin: boolean;
   }
   export interface registerUser {
-      login : string;
-      email : string;
-      password : string;
-      confirmedPassword : string;
-      firstname : string;
-      lastname : string;
-      birthdate : Date;
+      Login : string;
+      Email : string;
+      Password : string;
+      ConfirmPassword : string;
+      FirstName : string;
+      LastName : string;
+      BirthDate : Date;
+  }
+  export interface completeUser
+  {
+    id : string;
+    login : string;
+    email : string;
+    password : string;
+    firstName : string;
+    lastName : string;
+    birthDate : Date;
+    isAdmin : boolean;
+    comments : userComments[];
   }

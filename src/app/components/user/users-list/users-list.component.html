@@ -1,0 +1,16 @@
+<nb-card status="success" accent="warning">
+    <nb-card-header>
+        <h4>Liste des Utilisateurs du site</h4>
+        <h6>Nombre d'Utilisateurs inscrits : {{listUsers.length}}</h6>
+    </nb-card-header>
+    <nb-card-body>
+        <nb-list>
+            <nb-list-item *ngFor="let user of listUsers">
+                <div class=listItemContainer>
+                    <div class="firstColumn">{{user.login}}</div>
+                    <div class="secondColumn">{{ user.birthDate | date:'dd-MM-yyyy'}}</div>
+                </div>
+            </nb-list-item>
+        </nb-list>
+    </nb-card-body>
+    </nb-card>
