@@ -1,27 +1,43 @@
 <div>
     <nb-card style="margin-top: 12px;">
         <nb-card-header>
-            Commentaires
+            Modifier le commentaire : {{comment.id}}
         </nb-card-header>
         <nb-card-body>
-                 <div class=listItemContainer>
-                     <div class="header">
-                         <div class="title">{{comment.movieTitle}}</div>
-                         <button nbButton (click)="updateComment(comment.id)">Modifier</button>
-                     </div>
-                     <div class="content">
-                         <div class="contenHeader">
-                             <div><span>Title : </span>{{comment.title}}</div>
-                             <div><span>Date : </span>{{comment.created_at}}</div>
-                             <div>
-                                 <span>Note : </span>
-                             </div>
-                         </div>
-                         <div class="contentBody">
-                             {{comment.content}}
-                         </div>
-                     </div>
-                 </div>
+            <form [formGroup]="form" (ngSubmit)="update()">
+                <div class=listItemContainer>
+                    <div class="header">
+                        <div class="title">{{comment.movieTitle}}</div>
+                    </div>
+                    <div class="content">
+                        <div class="contenHeader">
+                            <div class="first">
+                                <label>Title : </label>
+                                <input tyep="text" nbInput formControlName="Title">
+                            </div>
+                            <div class="second">
+                                <span>Date : </span>{{comment.created_at}}</div>
+                            <div class="third">
+                                <label>Note : </label>
+                                <div class="progressContainer">
+                                    <nb-actions size="small">
+                                        <nb-action icon="minus-outline" (click)="setValue((comment.value) - 1)"></nb-action>
+                                      </nb-actions>
+                                    <nb-progress-bar [value]="comment.value * 20" status="success" size="large" displayValue="true" class="progressBar"></nb-progress-bar>
+                                    <nb-actions size="small">
+                                        <nb-action icon="plus-outline" (click)="setValue(comment.value + 1)"></nb-action>
+                                      </nb-actions>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contentBody">
+                            <label for="">Content</label>
+                            <textarea nbInput fullWidth formControlName="Content">{{comment.content}}</textarea>
+                        </div>
+                    </div>
+                    <button nbButton>Modifier</button>
+                </div>
+            </form>       
         </nb-card-body>
     </nb-card>
 

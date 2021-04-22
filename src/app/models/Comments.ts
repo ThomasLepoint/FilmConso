@@ -8,3 +8,9 @@ export interface userComments
     movieTitle : string;
     created_at : Date;
 }
+export interface updateComment{
+    id : string;
+    title : string;
+    content : string;
+    value : number;
+}

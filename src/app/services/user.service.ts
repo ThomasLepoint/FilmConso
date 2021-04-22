@@ -27,7 +27,7 @@ export class UserService {
       this._router.navigate(['user/myprofil'])  
       this._toast.success("modification réussie", "Success")
       },
-      (error) => {this._toast.danger("Erreur lors de l'inscription")});
+      (error) => {this._toast.danger("Erreur lors de la modification")});
   }
   getUsers() : Observable<User[]>
   {

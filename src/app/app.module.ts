@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbButtonModule, NbCardModule, NbInputModule, NbListModule, NbMenuModule, NbToastrModule, NbDialogModule, NbContextMenuModule, NbTreeGridModule, NbPopoverModule, NbDatepicker, NbDatepickerModule, NbIconModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbButtonModule, NbCardModule, NbInputModule, NbListModule, NbMenuModule, NbToastrModule, NbDialogModule, NbContextMenuModule, NbTreeGridModule, NbPopoverModule, NbDatepicker, NbDatepickerModule, NbIconModule, NbProgressBarModule, NbActionsModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NavComponent } from './components/nav/nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -78,6 +78,8 @@ import { UpdateCommentComponent } from './components/comments/update-comment/upd
     NbDatepickerModule.forRoot(),
     NbEvaIconsModule,
     NbIconModule,
+    NbProgressBarModule,
+    NbActionsModule,
   ],
   providers: [
     { provide : HTTP_INTERCEPTORS, useClass : TokenInterceptor, multi : true}
