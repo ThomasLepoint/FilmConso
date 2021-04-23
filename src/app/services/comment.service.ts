@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
 import { Observable } from 'rxjs';
-import { updateComment, userComments } from '../models/Comments';
+import { addComment, updateComment, userComments } from '../models/Comments';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +18,17 @@ export class CommentService {
   }
   update(comment : updateComment) 
   {
-    console.log('ici');
-    
     return this._httpClient.put<updateComment>("http://localhost:56172/api/Comment" , comment).subscribe(()=>{
       this._router.navigate(['user/myprofil'])  
       this._toast.success("modification réussie", "Success")
       },
       (error) => {this._toast.danger("Erreur lors de la modification")});
+  }
+  add(comment : addComment)
+  {
+    return this._httpClient.post<addComment>("http://localhost:56172/api/Comment", comment).subscribe(()=> {
+      this._toast.success("Commentaires ajouté", "Success")
+    },
+    (error)=>{this._toast.danger("Erreur lors de l'ajout du commentaire")})
   }
 }

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
 import { Observable } from 'rxjs';
-import { Movie } from '../models/Movie.models';
+import { completeMovie, Movie } from '../models/Movie.models';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +21,9 @@ export class MovieService {
     // })    
     // return this._httpClient.get<Movie[]>('http://localhost:56172/api/Movie', {headers : header});
     return this._httpClient.get<Movie[]>('http://localhost:56172/api/Movie');
+  }
+  get(id : string) : Observable<completeMovie>
+  {
+    return this._httpClient.get<completeMovie>('http://localhost:56172/api/Movie/'+id);
   }
 }

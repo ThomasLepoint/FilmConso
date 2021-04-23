@@ -29,6 +29,7 @@ import { UsersListComponent } from './components/user/users-list/users-list.comp
 import { MyaccountComponent } from './components/user/myaccount/myaccount.component';
 import { MyaccountupdateComponent } from './components/user/myaccountupdate/myaccountupdate.component';
 import { UpdateCommentComponent } from './components/comments/update-comment/update-comment.component';
+import { AddCommentComponent } from './components/comments/add-comment/add-comment.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { UpdateCommentComponent } from './components/comments/update-comment/upd
     UsersListComponent,
     MyaccountComponent,
     MyaccountupdateComponent,
-    UpdateCommentComponent
+    UpdateCommentComponent,
+    AddCommentComponent
   ],
   imports: [
     BrowserModule,

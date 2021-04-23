@@ -14,3 +14,10 @@ export interface updateComment{
     content : string;
     value : number;
 }
+export interface addComment{
+    movieId : string;
+    userId : string;
+    title : string;
+    content : string;
+    value : number;   
+}

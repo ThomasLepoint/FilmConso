@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NbDialogService, NbToastrService } from '@nebular/theme';
 import { Movie } from 'src/app/models/Movie.models';
 import { AuthService } from 'src/app/services/auth.service';
@@ -14,7 +15,7 @@ export class ListComponent implements OnInit {
   
   listMovie : Movie[];
   isAdmin : boolean;
-  constructor(private _movieServ : MovieService, private _toast : NbToastrService, private _authService : AuthService, protected dialogService: NbDialogService) { 
+  constructor(private _router : Router, private _movieServ : MovieService, private _toast : NbToastrService, private _authService : AuthService, protected dialogService: NbDialogService) { 
   }
 
   ngOnInit(): void {
@@ -36,6 +37,10 @@ export class ListComponent implements OnInit {
     },
     (error) => {this._toast.danger('Problème de chargement de la liste' , 'error')}
     )       
+  }
+  getDetail(id : string)
+  {
+    this._router.navigate(['movie/detail/'+id])
   }
 
 }

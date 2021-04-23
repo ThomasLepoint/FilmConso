@@ -11,6 +11,7 @@ import { MyaccountupdateComponent } from './components/user/myaccountupdate/myac
 import { RegisterComponent } from './components/user/register/register.component';
 import { UsersListComponent } from './components/user/users-list/users-list.component';
 import { CommentResolverService } from './services/comment-resolver.service';
+import { FilmResolverService } from './services/film-resolver.service';
 import { UserResolverService } from './services/user-resolver.service';
 
 const routes: Routes = [
@@ -22,7 +23,7 @@ const routes: Routes = [
   {path : 'user/myprofil/update', resolve : {completeUser : UserResolverService}, component : MyaccountupdateComponent},
   {path : 'movie/list', component : ListComponent},
   {path : 'movie/search', component : MovieSearchComponent},
-  {path : 'movie/detail/:id', component:MovieDetailComponent},
+  {path : 'movie/detail/:id', resolve : {completeMovie : FilmResolverService},component:MovieDetailComponent},
   {path : 'comment/update/:id', resolve : {Comment : CommentResolverService},component : UpdateCommentComponent},
   {path : '', redirectTo : 'home', pathMatch:'full'}
 ];

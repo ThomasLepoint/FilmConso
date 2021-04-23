@@ -1,1 +1,74 @@
-<p>movie-detail works!</p>
+<nb-card status="success" accent="warning">
+    <nb-card-header class="nbHeader">
+        <h4>{{movie.title}}</h4>
+        <button (click)="getBack()" nbButton><nb-icon icon="arrow-ios-back-outline" status="success"></nb-icon>Retour</button>
+    </nb-card-header>
+    <nb-card-body>
+        <div class="divContainer">
+            <h6>Informations général</h6>
+            <div class="inputContainer">
+                <div class="labelType">Date de sortie : </div>
+                <div class="inputType">{{movie.releaseDate | date:'dd-MM-yyyy'}} </div>
+            </div>
+            <div class="inputContainer">
+                <div class="labelType">Synopsis : </div>
+                <div class="inputType">{{movie.synopsis}} </div>
+            </div>
+            <div class="inputContainer">
+                <div class="labelType">Directeur : </div>
+                <div class="inputType">{{movie.director.firstName}} {{movie.director.lastName}} </div>
+            </div>
+            <div class="inputContainer">
+                <div class="labelType">Ecrit par : </div>
+                <div class="inputType">{{movie.scriptWriter.firstName}} {{movie.scriptWriter.lastName}} </div>
+            </div>
+        </div>
+        <div class="divContainer"> 
+            <h6>Casting</h6>
+            <nb-list>
+                <nb-list-item *ngFor="let item of movie.casting">
+                    <div>
+                        <div class="inputContainer">
+                            <div class="labelType">Acteur : </div>
+                            <div class="inputType">{{item.firstName}} {{item.lastName}} </div>
+                        </div>
+                        <div class="inputContainer">
+                            <div class="labelType">Role : </div>
+                            <div class="inputType">{{item.character}} </div>
+                        </div>
+                    </div>
+                </nb-list-item>
+            </nb-list>
+        </div>
+        <div>
+           <nb-card style="margin-top: 12px;">
+               <nb-card-header class="nbHeader">
+                   <h6>Commentaires</h6>
+                   <button nbButton (click)="openDialog(movie.title)"><nb-icon icon="plus-outline" status="success"></nb-icon></button>
+               </nb-card-header>
+               <nb-card-body>
+                <nb-list>
+                    <nb-list-item *ngFor="let item of movie.comments">
+                        <div class=listItemContainer>
+                            <div class="header">
+                                    <div><span>Title : </span>{{item.title}}</div>
+                                    <div><span>Date : </span>{{item.created_at}}</div>
+                                    <div>
+                                        <span>Note : </span>
+                                        <nb-icon *ngFor="let n of numSequence(item.value);
+                                        let i = index;" icon="star" status="success"></nb-icon>
+                                        <nb-icon *ngFor="let n of numSequence(5 - item.value);
+                                        let i = index;" icon="star-outline" status="success"></nb-icon>
+                                    </div>
+                            </div>
+                            <div class="content">
+                                    {{item.content}}
+                            </div>
+                        </div>
+                    </nb-list-item>
+                </nb-list>
+               </nb-card-body>
+           </nb-card>
+        </div>
+    </nb-card-body>
+    </nb-card>

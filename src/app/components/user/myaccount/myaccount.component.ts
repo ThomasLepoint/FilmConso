@@ -19,7 +19,7 @@ export class MyaccountComponent implements OnInit {
   loadUser()
   {
     let userId = localStorage.getItem('id');
-    this._service.getUser(userId).subscribe((data : completeUser) => {this.user = data , console.log(data);
+    this._service.getUser(userId).subscribe((data : completeUser) => {this.user = data;
     }
     )
   }

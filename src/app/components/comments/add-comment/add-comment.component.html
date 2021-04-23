@@ -1,41 +1,38 @@
-<div>
-    <nb-card style="margin-top: 12px;">
+<div class="cardContainer">
+    <nb-card style="margin-top: 12px; width:750px; height: auto;" size="small">
         <nb-card-header>
-            Modifier le commentaire : {{comment.id}}
+            <h4>{{title}}</h4>
+            <h6>Ajouter un commentaire</h6>
         </nb-card-header>
         <nb-card-body>
-            <form [formGroup]="form" (ngSubmit)="update()">
+            <form [formGroup]="form" (ngSubmit)="add()">
                 <div class=listItemContainer>
-                    <div class="header">
-                        <div class="title">{{comment.movieTitle}}</div>
-                    </div>
                     <div class="content">
                         <div class="contenHeader">
                             <div class="first">
                                 <label>Title : </label>
                                 <input tyep="text" nbInput formControlName="Title">
                             </div>
-                            <div class="second">
-                                <span>Date : </span>{{comment.created_at}}</div>
                             <div class="third">
                                 <label>Note : </label>
                                 <div class="progressContainer">
                                     <nb-actions size="small">
-                                        <nb-action icon="minus-outline" (click)="setValue((comment.value) - 1)"></nb-action>
+                                        <nb-action icon="minus-outline" (click)="setValue((noteValue) - 1)"></nb-action>
                                       </nb-actions>
-                                    <nb-progress-bar [value]="comment.value * 20" status="success" size="large" displayValue="true" class="progressBar"></nb-progress-bar>
+                                    <nb-progress-bar [value]="noteValue * 20" status="success" size="large" displayValue="true" class="progressBar"></nb-progress-bar>
                                     <nb-actions size="small">
-                                        <nb-action icon="plus-outline" (click)="setValue(comment.value + 1)"></nb-action>
+                                        <nb-action icon="plus-outline" (click)="setValue(noteValue + 1)"></nb-action>
                                       </nb-actions>
                                 </div>
                             </div>
                         </div>
                         <div class="contentBody">
                             <label for="">Content</label>
-                            <textarea nbInput fullWidth formControlName="Content">{{comment.content}}</textarea>
+                            <textarea nbInput fullWidth formControlName="Content"></textarea>
                         </div>
                     </div>
-                    <button nbButton>Modifier</button>
+                    <button nbButton [disabled]="form.invalid"><nb-icon icon="plus-square-outline" status="success"></nb-icon>Ajouter</button>
+                    <button nbButton (click)="close()"><nb-icon icon="close-square-outline" status="danger"></nb-icon>Annuler</button>
                 </div>
             </form>       
         </nb-card-body>

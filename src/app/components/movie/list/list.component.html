@@ -20,7 +20,7 @@
                 <div class="secondColumn">{{ film.releaseDate | date:'dd-MM-yyyy'}}</div>
                 <div class="buttonContainer">
                     <button nbButton (click)="openDialog(film.synopsis)">Synopsis</button>
-                    <button nbButton>Details</button>
+                    <button nbButton (click)="getDetail(film.id)">Details</button>
                 </div>
             </div>
         </nb-list-item>
