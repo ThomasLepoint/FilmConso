@@ -44,6 +44,7 @@
            <nb-card style="margin-top: 12px;">
                <nb-card-header class="nbHeader">
                    <h6>Commentaires</h6>
+                   <h6>Nombre de commentaires pour ce film : {{movie.comments.length}}</h6>
                    <button nbButton (click)="openDialog(movie.title)"><nb-icon icon="plus-outline" status="success"></nb-icon></button>
                </nb-card-header>
                <nb-card-body>

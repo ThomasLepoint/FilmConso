@@ -21,3 +21,14 @@ export interface addComment{
     content : string;
     value : number;   
 }
+export interface fullComment{
+    id : string;
+    title : string;
+    content : string;
+    value : number;
+    userId : string;
+    login : string;
+    movieId : string;
+    movieTitle : string;
+    created_at : Date;
+}

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
 import { Observable } from 'rxjs';
-import { addComment, updateComment, userComments } from '../models/Comments';
+import { addComment, fullComment, updateComment, userComments } from '../models/Comments';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +30,9 @@ export class CommentService {
       this._toast.success("Commentaires ajouté", "Success")
     },
     (error)=>{this._toast.danger("Erreur lors de l'ajout du commentaire")})
+  }
+  getAll() : Observable<fullComment[]>
+  {
+    return this._httpClient.get<fullComment[]>("http://localhost:56172/api/Comment/GetComments");
   }
 }

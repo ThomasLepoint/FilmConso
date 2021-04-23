@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NbDialogRef } from '@nebular/theme';
+import { fullComment } from 'src/app/models/Comments';
 
 @Component({
   selector: 'app-comment-detail',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./comment-detail.component.scss']
 })
 export class CommentDetailComponent implements OnInit {
-
-  constructor() { }
+  
+  comment : fullComment
+  constructor(protected dialogRef: NbDialogRef<CommentDetailComponent>) { }
 
   ngOnInit(): void {
+    console.log(this.comment);
+    
   }
-
+  close()
+  {
+    this.dialogRef.close();
+  }
+  numSequence(n: number): Array<number> {
+    return Array(n);
+  }
 }

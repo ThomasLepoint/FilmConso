@@ -1,1 +1,27 @@
-<p>comment-detail works!</p>
+<nb-card status="success" accent="warning" style="margin-top: 12px; width:750px; height: auto;" size="small">
+    <nb-card-header>
+        <h4>Commentaire du Film : {{comment.movieTitle}}</h4>
+    </nb-card-header>
+    <nb-card-body>
+                <div class="listItemContainer">
+                    <div class="firstColumn">Title du film : {{comment.movieTitle}}</div>
+                    <div class="secondColumn">Posté par : {{comment.login}}</div>
+                    <div class="thirdColumn">                           
+                        <span>Note : </span>
+                        <nb-icon *ngFor="let n of numSequence(comment.value);
+                        let i = index;" icon="star" status="success"></nb-icon>
+                        <nb-icon *ngFor="let n of numSequence(5 - comment.value);
+                        let i = index;" icon="star-outline" status="success"></nb-icon></div>
+                </div>
+                <div class="listItemContainer">                    
+                    <div class="firstColumn">Date : {{ comment.created_at | date:'dd-MM-yyyy'}}</div>
+                    <div class="buttonContainer">
+                        <button nbButton (click)="close()">Retour à la liste</button>
+                    </div>
+                </div>
+                <div class="listContentContainer">
+                    <div>{{comment.title}}</div>
+                    <div>{{comment.content}}</div>
+                </div>
+    </nb-card-body>
+    </nb-card>

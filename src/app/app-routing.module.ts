@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ListCommentComponent } from './components/comments/list-comment/list-comment.component';
 import { UpdateCommentComponent } from './components/comments/update-comment/update-comment.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListComponent } from './components/movie/list/list.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path : 'movie/list', component : ListComponent},
   {path : 'movie/search', component : MovieSearchComponent},
   {path : 'movie/detail/:id', resolve : {completeMovie : FilmResolverService},component:MovieDetailComponent},
+  {path : 'comment/list', component : ListCommentComponent},
   {path : 'comment/update/:id', resolve : {Comment : CommentResolverService},component : UpdateCommentComponent},
   {path : '', redirectTo : 'home', pathMatch:'full'}
 ];

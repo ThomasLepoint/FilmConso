@@ -30,6 +30,7 @@ import { MyaccountComponent } from './components/user/myaccount/myaccount.compon
 import { MyaccountupdateComponent } from './components/user/myaccountupdate/myaccountupdate.component';
 import { UpdateCommentComponent } from './components/comments/update-comment/update-comment.component';
 import { AddCommentComponent } from './components/comments/add-comment/add-comment.component';
+import { ListCommentComponent } from './components/comments/list-comment/list-comment.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { AddCommentComponent } from './components/comments/add-comment/add-comme
     MyaccountComponent,
     MyaccountupdateComponent,
     UpdateCommentComponent,
-    AddCommentComponent
+    AddCommentComponent,
+    ListCommentComponent
   ],
   imports: [
     BrowserModule,

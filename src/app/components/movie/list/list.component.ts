@@ -31,8 +31,6 @@ export class ListComponent implements OnInit {
   {    
     this._movieServ.getAll().subscribe((data : Movie[])=>{
       this.listMovie = data;
-      console.log(this.listMovie);
-      
       this._toast.success('Liste des Films chargées avec succès', 'Succès')
     },
     (error) => {this._toast.danger('Problème de chargement de la liste' , 'error')}
