@@ -28,7 +28,6 @@ export class AuthService {
     ]},
     {title : 'Movies', icon : 'film-outline', children : [
       {title : 'List' , link : '/movie/list' , icon : 'list-outline'},
-      {title : 'Search', link : '/movie/search', icon : 'search-outline'},
     ]},
     {title : 'Comments', icon : 'message-circle-outline', children : [
       {title : 'List' , link : '/movie/list' , icon : 'list-outline'}
@@ -43,7 +42,6 @@ export class AuthService {
     ]},
     {title : 'Movies', icon : 'film-outline', children : [
       {title : 'List' , link : '/movie/list' , icon : 'list-outline'},
-      {title : 'Search', link : '/movie/search', icon : 'search-outline'},
     ]},
     {title : 'Comments', icon : 'message-circle-outline', children : [
       {title : 'List' , link : '/movie/list' , icon : 'list-outline'}

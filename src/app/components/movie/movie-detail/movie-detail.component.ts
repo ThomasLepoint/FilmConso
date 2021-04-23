@@ -12,10 +12,17 @@ import { AddCommentComponent } from '../../comments/add-comment/add-comment.comp
 })
 export class MovieDetailComponent implements OnInit {
   movie : completeMovie;
+  idMovie : string;
   constructor(private _actRoute : ActivatedRoute, private _router : Router, private _service : MovieService, protected dialogService: NbDialogService, private _toast : NbToastrService) { }
 
   ngOnInit(): void {
-    this.movie = this._actRoute.snapshot.data['completeMovie'];
+    this.loadMovie();
+    // this.movie = this._actRoute.snapshot.data['completeMovie'];
+  }
+  loadMovie()
+  {
+    this._actRoute.params.subscribe(params => this.idMovie = params['id'])
+    this._service.get(this.idMovie).subscribe((data : completeMovie) => this.movie = data)
   }
   numSequence(n: number): Array<number> {
     return Array(n);
@@ -24,7 +31,7 @@ export class MovieDetailComponent implements OnInit {
   {
     this.dialogService.open(AddCommentComponent, {
       context: {title : title, movieId : this.movie.id}
-    });
+    }).onClose.subscribe(()=>this.ngOnInit());
   }
   getBack()
   {
