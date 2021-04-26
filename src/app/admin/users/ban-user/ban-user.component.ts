@@ -29,7 +29,6 @@ export class BanUserComponent implements OnInit {
     this.user.reason = this.form.get("reason").value
     this.user.disable_Until = this.form.get("disable_Until").value
     this._service.banUser(this.user)
-    this.ngOnInit();
     this.close();
   }
   close() {

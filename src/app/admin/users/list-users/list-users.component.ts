@@ -31,11 +31,12 @@ export class ListUsersComponent implements OnInit {
   {
     this._dialog.open(BanUserComponent, {
       context: {id : id, name : name}
-    });
+    }).onClose.subscribe(()=>this.ngOnInit());
   }
   switchRole(id : string)
   {
-    this._service.switchRole(id)
+    this._service.switchRole(id);
+    this.ngOnInit();
   }
 
 }

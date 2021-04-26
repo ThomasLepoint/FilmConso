@@ -8,3 +8,9 @@ export interface casting
     birthDate : Date;
     character : string;
 }
+export interface insertCasting{
+    id : string;
+    movieId : string;
+    staffId : string;
+    character : string;
+}

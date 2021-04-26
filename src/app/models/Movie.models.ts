@@ -1,4 +1,4 @@
-import { casting } from "./Casting.model";
+import { casting, insertCasting } from "./Casting.model";
 import { person } from "./person.model";
 
 
@@ -19,4 +19,14 @@ export class completeMovie {
     director : person;
     casting : casting[];
     comments : Comment[];
+}
+export class insertMovie
+{
+    id : string;
+    title : string;
+    synopsis : string;
+    releaseDate : Date;
+    scriptWriterId : string;
+    directorId : string;
+    casting : insertCasting[];
 }

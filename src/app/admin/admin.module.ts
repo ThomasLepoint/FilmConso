@@ -5,7 +5,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { ListUsersComponent } from './users/list-users/list-users.component';
 import { FourOfourComponent } from '../components/errors/four-ofour/four-ofour.component';
-import { NbActionsModule, NbButtonModule, NbCardModule, NbContextMenuModule, NbDatepicker, NbDatepickerModule, NbDialogModule, NbIconModule, NbInputModule, NbLayoutModule, NbListModule, NbMenuModule, NbPopoverModule, NbProgressBarModule, NbSidebarModule, NbToastrModule } from '@nebular/theme';
+import { NbActionsModule, NbButtonModule, NbCardModule, NbContextMenuModule, NbDatepicker, NbDatepickerModule, NbDialogModule, NbIconModule, NbInputModule, NbLayoutModule, NbListModule, NbMenuModule, NbPopoverModule, NbProgressBarModule, NbSelectModule, NbSidebarModule, NbToastrModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -16,6 +16,7 @@ import { BanUserComponent } from './users/ban-user/ban-user.component';
 import { AddStaffComponent } from './staff/add-staff/add-staff.component';
 import { CommentListComponent } from './comment/comment-list/comment-list.component';
 import { BanCommentComponent } from './comment/ban-comment/ban-comment.component';
+import { UpdateMovieComponent } from './movies/update-movie/update-movie.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { BanCommentComponent } from './comment/ban-comment/ban-comment.component
        BanUserComponent,
        AddStaffComponent,
        CommentListComponent,
-       BanCommentComponent
+       BanCommentComponent,
+       UpdateMovieComponent
   ],
   imports: [
     CommonModule,
@@ -50,7 +52,8 @@ import { BanCommentComponent } from './comment/ban-comment/ban-comment.component
     NbDatepickerModule.forRoot(),
     NbIconModule,
     NbProgressBarModule,
-    NbActionsModule
+    NbActionsModule,
+    NbSelectModule
   ],
   providers: [
     { provide : HTTP_INTERCEPTORS, useClass : TokenInterceptor, multi : true}

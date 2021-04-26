@@ -1,0 +1,28 @@
+<nb-card status="success" accent="warning">
+    <nb-card-header class="nbHeader">
+        <h4>Ajouter un film</h4>
+    </nb-card-header>
+    <nb-card-body>
+        <form [formGroup]="form" (ngSubmit)="updateMovie()">
+            <div class="divContainer">
+                <h6>Informations général</h6>
+                <div class="inputContainer">
+                    <label class="labelType">Title : </label>
+                    <input formControlName="title" nbInput>
+                </div>
+                <div class="inputContainer">
+                    <label class="labelType">Date de sortie : </label>
+                    <input [nbDatepicker]="datepicker" formControlName="releaseDate" nbInput>
+                    <nb-datepicker #datepicker></nb-datepicker>
+                </div>
+                <div class="inputContainer synopsis">
+                    <div class="labelType">Synopsis : </div>
+                    <textarea class="inputType" nbInput formControlName="synopsis"></textarea> 
+                </div>
+            </div>
+            <div class="inputContainer">
+                <button nbButton>Modifier</button>
+            </div>
+        </form>
+    </nb-card-body>
+    </nb-card>

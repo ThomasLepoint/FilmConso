@@ -1,1 +1,61 @@
-<p>add-movies works!</p>
+<nb-card status="success" accent="warning">
+    <nb-card-header class="nbHeader">
+        <h4>Ajouter un film</h4>
+    </nb-card-header>
+    <nb-card-body>
+        <form [formGroup]="form" (ngSubmit)="addMovie()">
+            <div class="divContainer">
+                <h6>Informations général</h6>
+                <div class="inputContainer">
+                    <label class="labelType">Title : </label>
+                    <input formControlName="title" nbInput>
+                </div>
+                <div class="inputContainer">
+                    <label class="labelType">Date de sortie : </label>
+                    <input [nbDatepicker]="datepicker" formControlName="releaseDate" nbInput>
+                    <nb-datepicker #datepicker></nb-datepicker>
+                </div>
+                <div class="inputContainer">
+                    <div class="labelType">Synopsis : </div>
+                    <textarea class="inputType" nbInput formControlName="synopsis"></textarea> 
+                </div>
+                <div class="inputContainer">
+                    <div class="labelType">Directeur : </div>
+                    <nb-select placeholder="Select Director" [(selected)]="director" >
+                        <nb-option value=""></nb-option>
+                        <nb-option *ngFor="let item of casting" value="{{item.id}}">{{item.firstName}} {{item.lastName}}</nb-option>
+                    </nb-select>
+                </div>
+                <div class="inputContainer">
+                    <div class="labelType">Ecrit par : </div>
+                    <nb-select placeholder="Select Script Writer" [(selected)]="scriptWriter" >
+                        <nb-option value=""></nb-option>
+                        <nb-option *ngFor="let item of casting" value="{{item.id}}">{{item.firstName}} {{item.lastName}}</nb-option>
+                    </nb-select>
+                </div>
+            </div>
+            <div class="divContainer"> 
+                <div class="castingContainer">
+                    <p class="title">Casting</p>
+                    <button nbButton (click)="AddActor()" class="plusButton"><nb-icon icon="plus-outline" status="success"></nb-icon></button>
+                    <button nbButton (click)="removeActor()" class="minusButton"><nb-icon icon="minus-outline" status="danger"></nb-icon></button>
+                    <div class="itemContainer" formArrayName="cast">
+                        <div  *ngFor="let actor of getCast().controls; let i = index">
+                            <div [formGroupName]="i">
+                                <nb-select placeholder="Select Actor" formControlName="staffId">
+                                    <nb-option value="">Select Actor</nb-option>
+                                    <nb-option *ngFor="let item of casting" value="{{item.id}}">{{item.firstName}} {{item.lastName}}</nb-option>
+                                </nb-select>
+                                <label for="">Role : </label>
+                                <input type="text" nbInput formControlName="character">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inputContainer">
+                <button nbButton>Ajouter</button>
+            </div>
+        </form>
+    </nb-card-body>
+    </nb-card>
