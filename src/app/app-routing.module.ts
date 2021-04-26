@@ -12,23 +12,25 @@ import { MyaccountComponent } from './components/user/myaccount/myaccount.compon
 import { MyaccountupdateComponent } from './components/user/myaccountupdate/myaccountupdate.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { UsersListComponent } from './components/user/users-list/users-list.component';
+import { AdminGuardGuard } from './services/admin-guard.guard';
 import { CommentResolverService } from './services/comment-resolver.service';
 import { FilmResolverService } from './services/film-resolver.service';
+import { UserGuardGuard } from './services/user-guard.guard';
 import { UserResolverService } from './services/user-resolver.service';
 
 const routes: Routes = [
   {path : 'home', component : HomeComponent},
   {path : 'user/auth', component : AuthComponent},
   {path : 'user/register', component : RegisterComponent},
-  {path : 'user/list', component : UsersListComponent},
-  {path : 'user/myprofil', resolve : {completeUser : UserResolverService}, component: MyaccountComponent},
-  {path : 'user/myprofil/update', resolve : {completeUser : UserResolverService}, component : MyaccountupdateComponent},
-  {path : 'movie/list', component : ListComponent},
-  {path : 'movie/search', component : MovieSearchComponent},
-  {path : 'movie/detail/:id', resolve : {completeMovie : FilmResolverService},component:MovieDetailComponent},
-  {path : 'comment/list', component : ListCommentComponent},
-  {path : 'comment/update/:id', resolve : {Comment : CommentResolverService},component : UpdateCommentComponent},
-  {path : 'admin', loadChildren : ()=> import('./admin/admin.module').then(m=>m.AdminModule)},
+  {path : 'user/list', canActivate : [UserGuardGuard] ,component : UsersListComponent},
+  {path : 'user/myprofil',canActivate : [UserGuardGuard], resolve : {completeUser : UserResolverService}, component: MyaccountComponent},
+  {path : 'user/myprofil/update',canActivate : [UserGuardGuard], resolve : {completeUser : UserResolverService}, component : MyaccountupdateComponent},
+  {path : 'movie/list',canActivate : [UserGuardGuard], component : ListComponent},
+  {path : 'movie/search', canActivate : [UserGuardGuard],component : MovieSearchComponent},
+  {path : 'movie/detail/:id',canActivate : [UserGuardGuard], resolve : {completeMovie : FilmResolverService},component:MovieDetailComponent},
+  {path : 'comment/list',canActivate : [UserGuardGuard], component : ListCommentComponent},
+  {path : 'comment/update/:id',canActivate : [UserGuardGuard], resolve : {Comment : CommentResolverService},component : UpdateCommentComponent},
+  {path : 'admin',canActivate : [AdminGuardGuard], loadChildren : ()=> import('./admin/admin.module').then(m=>m.AdminModule)},
   {path : '404', component:FourOfourComponent},
   {path : '', redirectTo : 'home', pathMatch:'full'},
   {path : '**', redirectTo : '404'}

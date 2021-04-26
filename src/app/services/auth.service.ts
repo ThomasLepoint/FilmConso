@@ -11,6 +11,7 @@ import { AuthUser, User } from '../models/User.models';
 export class AuthService {
   user : User
   isConnected : boolean = (localStorage.getItem('token') ? true : false);
+  isAdmin : boolean = (localStorage.getItem('role') === 'true');
   loginSubJect = new Subject<boolean>();
   logoutItems : NbMenuItem[] = [
     {link : '/home', title : 'Home', icon : 'home'},
@@ -96,6 +97,7 @@ login(AuthUser : AuthUser)
         localStorage.setItem('role', u.isAdmin ? 'true' : 'false')
         this.isConnected = true;
         (this.user.isAdmin) ? this.items = this.adminItem : this.items = this.loginItems;
+        this.isAdmin = this.user.isAdmin;
         this.emitItemSubject();
         this._router.navigate(['home'])
       }
