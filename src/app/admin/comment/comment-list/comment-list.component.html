@@ -1,0 +1,40 @@
+<nb-card status="success" accent="warning">
+    <nb-card-header>
+        <h4>Liste des Commentaires</h4>
+        <h6>Nombre de commentaires postés à ce jour : {{listComment.length}}</h6>
+    </nb-card-header>
+    <nb-card-body>
+        <nb-list>
+            <nb-list-item>
+                <div class="listItemContainer">
+                    <div class="firstColumn">Title du film</div>
+                    <div class="secondColumn">Posté par :</div>
+                    <div class="thirdColumn">Note :</div>
+                    <div class="fourthColumn">Date : </div>
+                    <div class="buttonContainer"></div>
+                </div>
+            </nb-list-item>
+        </nb-list>
+        <nb-list>
+            <nb-list-item *ngFor="let item of listComment">
+                <div class=listItemContainer>
+                        <div class="firstColumn">{{item.movieTitle}}</div>
+                        <div class="secondColumn">{{item.login}}</div>
+                        <div class="thirdColumn">
+                            <span>Note : </span>
+                            <nb-icon *ngFor="let n of numSequence(item.value);
+                            let i = index;" icon="star" status="success"></nb-icon>
+                            <nb-icon *ngFor="let n of numSequence(5 - item.value);
+                            let i = index;" icon="star-outline" status="success"></nb-icon>
+                        </div>
+                        <div class="fourthColumn">{{ item.created_at | date:'dd-MM-yyyy'}}</div>
+                        <div class="buttonContainer">
+                            <button nbButton (click)="openDialog(item)">Voir le commentaire</button>
+                            <button nbButton (click)="banComment(item.id, item.title)"><nb-icon icon="trash-2-outline" status="danger"></nb-icon></button>
+                        </div>
+                </div>
+            </nb-list-item>
+        </nb-list>
+    </nb-card-body>
+    </nb-card>
+    

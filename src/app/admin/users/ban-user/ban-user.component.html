@@ -1,0 +1,19 @@
+    <nb-card>
+        <nb-card-header>Désactiver l'Utilisateur : {{name}}</nb-card-header>
+        <nb-card-body>
+            <form [formGroup]="form" (ngSubmit)="banUser()">
+                <div class="inputContainer">
+                    <label>Raison du banissement : </label>
+                    <textarea formControlName="reason" nbInput fullWidth placeholder="Ex : non respect des CGU"></textarea>
+                    <input [nbDatepicker]="datepicker" formControlName="disable_Until">
+                    <nb-datepicker #datepicker></nb-datepicker>
+                </div>
+                <div>
+                    <button type="submit" nbButton [disabled]="form.invalid">Désactiver</button>
+                </div>
+            </form>
+        </nb-card-body>
+        <nb-card-footer>
+          <button nbButton (click)="close()">Close</button>
+        </nb-card-footer>
+      </nb-card>

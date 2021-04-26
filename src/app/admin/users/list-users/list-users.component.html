@@ -1,0 +1,19 @@
+<nb-card status="success" accent="warning">
+    <nb-card-header>
+        <h4>Liste des Utilisateurs du site</h4>
+        <h6>Nombre d'Utilisateurs inscrits : {{listUsers.length}}</h6>
+    </nb-card-header>
+    <nb-card-body>
+        <nb-list>
+            <nb-list-item *ngFor="let user of listUsers">
+                <div class=listItemContainer>
+                    <div class="firstColumn">{{user.login}}</div>
+                    <div class="secondColumn">{{ user.birthDate | date:'dd-MM-yyyy'}}</div>
+                    <div>Est Admin ?</div>
+                    <button nbButton (click)="switchRole(user.id)"><nb-icon icon="toggle-left-outline" status="{{(user.isAdmin) ? 'success' : 'danger'}}"></nb-icon></button>
+                    <button nbButton (click)="banUser(user.id, user.login)"><nb-icon icon="trash-2-outline" status="danger"></nb-icon></button>
+                </div>
+            </nb-list-item>
+        </nb-list>
+    </nb-card-body>
+    </nb-card>

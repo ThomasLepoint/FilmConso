@@ -33,3 +33,9 @@ export interface User {
     isAdmin : boolean;
     comments : userComments[];
   }
+  export interface deleteUser
+  {
+    id : string;
+    reason : string;
+    disable_Until : Date;
+  }

@@ -48,16 +48,16 @@ export class AuthService {
     ]},
     {title : 'Admin', icon : 'options-2-outline', children : [
         {title : 'Users', icon : 'people-outline', children : [
-          {title : 'Get Every User', icon : 'list-outline', link : '/user/getall'},
+          {title : 'Get Every User', icon : 'list-outline', link : 'admin/users/list'},
         ]},
         {title : 'Movies', icon : 'film-outline', children : [
-          {title : 'Get Every Movie', icon : 'list-outline', link : '/movie/getall'},
+          {title : 'Get Every Movie', icon : 'list-outline', link : 'admin/movies/list'},
         ]},
         {title : 'Staff', icon : 'film-outline', children : [
-          {title : 'Add Staff', icon : 'person-add-outline', link : '/staff/new'},
+          {title : 'Add Staff', icon : 'person-add-outline', link : 'admin/staff/add'},
         ]},
         {title : 'Comments', icon : 'message-circle-outline', children : [
-          {title : 'Get Every Comment', icon : 'list-outline', link : '/comment/getall'},
+          {title : 'Get Every Comment', icon : 'list-outline', link : 'admin/comment/list'},
         ]},
       ]}]
   items : NbMenuItem[];

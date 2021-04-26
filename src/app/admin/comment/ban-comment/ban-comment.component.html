@@ -1,0 +1,17 @@
+<nb-card>
+    <nb-card-header>Désactiver le commentaire : {{name}}</nb-card-header>
+    <nb-card-body>
+        <form [formGroup]="form" (ngSubmit)="banComment()">
+            <div class="inputContainer">
+                <label>Raison du banissement : </label>
+                <textarea formControlName="reason" nbInput fullWidth placeholder="Ex : non respect des CGU"></textarea>
+            </div>
+            <div>
+                <button type="submit" nbButton [disabled]="form.invalid">Désactiver</button>
+            </div>
+        </form>
+    </nb-card-body>
+    <nb-card-footer>
+      <button nbButton (click)="close()">Close</button>
+    </nb-card-footer>
+  </nb-card>

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
 import { Observable } from 'rxjs';
-import { addComment, fullComment, updateComment, userComments } from '../models/Comments';
+import { addComment, disableComment, fullComment, updateComment, userComments } from '../models/Comments';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +34,12 @@ export class CommentService {
   getAll() : Observable<fullComment[]>
   {
     return this._httpClient.get<fullComment[]>("http://localhost:56172/api/Comment/GetComments");
+  }
+  delete(comment : disableComment)
+  {
+    return this._httpClient.request('delete', "http://localhost:56172/api/Comment/", {body : comment}).subscribe(()=>{
+      this._toast.success("modification réussie", "Success")
+      },
+      (error) => {this._toast.danger("Erreur lors de la modification")});
   }
 }

@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
 import { Observable } from 'rxjs';
-import { completeUser, registerUser, User } from '../models/User.models';
+import { completeUser, deleteUser, registerUser, User } from '../models/User.models';
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +42,19 @@ export class UserService {
     {
       return this._httpClient.get<completeUser>("http://localhost:56172/api/User/" + id)
     }
+  }
+  banUser(user : deleteUser)
+  {
+    return this._httpClient.request('delete', "http://localhost:56172/api/User/" + user.id, {body : user}).subscribe(()=>{
+      this._toast.success("modification réussie", "Success")
+      },
+      (error) => {this._toast.danger("Erreur lors de la modification")});
+  }
+  switchRole(id : string)
+  {
+    return this._httpClient.put("http://localhost:56172/api/User/SwitchRole", {Id : id}).subscribe(()=>{
+      this._toast.success("modification réussie", "Success")
+      },
+      (error) => {this._toast.danger("Erreur lors de la modification")});
   }
 }

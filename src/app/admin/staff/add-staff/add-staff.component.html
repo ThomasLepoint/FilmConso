@@ -1,0 +1,25 @@
+<nb-card>
+    <nb-card-header>
+        Ajout un membre du staff
+    </nb-card-header>
+    <nb-card-body>
+        <form [formGroup]="form" (ngSubmit)="create()">
+            <div class="inputContainer">
+                <label for="">FirstName</label>
+                <input type="text" nbInput formControlName="firstName">
+            </div>
+            <div class="inputContainer">
+                <label for="">LastName</label>
+                <input type="text" nbInput formControlName="lastName">
+            </div>
+            <div class="inputContainer">
+                <label for="">BirthDate</label>
+                <input [nbDatepicker]="datepicker" formControlName="birthDate" nbInput>
+                <nb-datepicker #datepicker></nb-datepicker>
+            </div>
+            <div class="buttonContainer">
+                <button nbButton>Ajouter</button>
+            </div>
+        </form>
+    </nb-card-body>
+</nb-card>

@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogService, NbToastrService } from '@nebular/theme';
+import { CommentDetailComponent } from 'src/app/components/comments/comment-detail/comment-detail.component';
 import { fullComment } from 'src/app/models/Comments';
 import { CommentService } from 'src/app/services/comment.service';
-import { CommentDetailComponent } from '../comment-detail/comment-detail.component';
+import { BanCommentComponent } from '../ban-comment/ban-comment.component';
 
 @Component({
-  selector: 'app-list-comment',
-  templateUrl: './list-comment.component.html',
-  styleUrls: ['./list-comment.component.scss']
+  selector: 'app-comment-list',
+  templateUrl: './comment-list.component.html',
+  styleUrls: ['./comment-list.component.scss']
 })
-export class ListCommentComponent implements OnInit {
-  
+export class CommentListComponent implements OnInit {
+
   listComment : fullComment[] = [];
 
   constructor(private _service : CommentService, private _toast : NbToastrService, protected dialogService: NbDialogService) { }
@@ -34,5 +35,11 @@ export class ListCommentComponent implements OnInit {
       context: {comment : comment_}
     });
   }
-
+  banComment(id : string, name : string)
+  {
+    this.dialogService.open(BanCommentComponent, {
+      context: {id : id, name : name}
+    });
+  }
+  
 }

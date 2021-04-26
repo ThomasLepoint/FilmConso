@@ -32,3 +32,8 @@ export interface fullComment{
     movieTitle : string;
     created_at : Date;
 }
+export interface disableComment
+{
+    id : string;
+    reason : string
+}
